@@ -1,0 +1,22 @@
+{
+  "name": "z_a-task",
+  "version": "1.0.0",
+  "description": "ZA Task",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "start": "nodemon app.js"
+  },
+  "author": "Abdul Hadi",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.0",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.4"
+  }
+}
