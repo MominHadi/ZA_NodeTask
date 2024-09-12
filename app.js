@@ -1,15 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
 const Port = 8082
-const mongoose = require('mongoose');
-const authRoutes = require('./routes/auth')
-//Parsing Json data---
+
+const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/posts');
+
+//Parsing Json data from incoming Request fro client-Side
 app.use(bodyParser.json());
 
-
-
+//Using for User create and login
 app.use('/auth', authRoutes);
+
+//Used for CRUD and other APIs
+app.use('/blogApp', postRoutes);
 
 
 mongoose.connect(`mongodb+srv://hadi:jimmychoo@cluster0.t1v4y.mongodb.net/blogApi`)

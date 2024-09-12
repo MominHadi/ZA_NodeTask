@@ -1,14 +1,29 @@
 const Router = require('express').Router()
-const authController = require('../controllers/auth');
+const postController = require('../controllers/posts');
 const { body } = require('express-validator');
 
+Router.get('/posts', postController.getAllPost);
+Router.get('/userPosts', postController.getPostwithAuthor);
+Router.get('/getPopularPosts', postController.sortByPopularPost);
 
-Router.post('/register', [
-    body('name', 'Enter Valid Name').trim().isLength({ min: 5 }),
-    body('email', 'Enter Valid Email Address').isEmail(),
-    body('password', 'Password Should be atleast of 6 characters').isString().isLength({ min: 6 }),
+
+Router.post('/createPost', [
+    body('title', 'Enter Valid Post Title').isString().trim().isLength({ min: 5 }),
+    body('content', 'Content Should be atleast have 5 characters').trim().isString().isLength({ min: 5 }),
 ]
-, authController.createUser);
+    , postController.createBlogPost);
 
+
+Router.put('/updatePost', [
+    body('title', 'Enter Valid Post Title').isString().trim().isLength({ min: 5 }),
+    body('content', 'Content Should be atleast have 5 characters').trim().isString().isLength({ min: 5 }),
+]
+    , postController.updatePost);
+
+Router.delete('/deletePost', postController.deletePost)
+
+
+Router.put('/likePost', postController.likePost)
+Router.put('/unLikePost', postController.unLikePost)
 
 module.exports = Router;

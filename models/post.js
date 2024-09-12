@@ -24,15 +24,15 @@ const PostSchema = new Schema({
  
     updatedAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
 
 })
 
 
-PostSchema.pre('save', (next) => {
-    this.updatedAt = Date.now()
-    next();
-})
+// PostSchema.pre('save', (next) => {
+//     this.updatedAt = Date.now()
+//     next();
+// })
 
 module.exports = mongoose.model('Post', PostSchema)

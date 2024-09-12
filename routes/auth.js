@@ -11,4 +11,11 @@ Router.post('/register', [
 , authController.createUser);
 
 
+Router.post('/login', [
+    body('email', 'Enter Valid Email Address').isEmail(),
+    body('password', 'Password Should be atleast of 6 characters').isString().isLength({ min: 6 }),
+]
+, authController.authenticateUser);
+
+
 module.exports = Router;
